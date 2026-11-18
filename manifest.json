@@ -1,0 +1,9 @@
+{
+  "id": "orbit-graph",
+  "name": "Orbit Graph",
+  "version": "1.0.0",
+  "minAppVersion": "1.4.0",
+  "description": "See your vault as a glowing solar system: the current note is the sun, linked notes orbit around it, and the rest of your notes drift in an outer asteroid belt.",
+  "author": "coolpanda0513",
+  "isDesktopOnly": false
+}
