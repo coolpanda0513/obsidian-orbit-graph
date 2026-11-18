@@ -3,7 +3,6 @@
  * Build with `npm run demo`, then open demo/index.html in a browser.
  */
 import { buildGraph, NoteInfo } from "../src/graph";
-import { assignFolderColors } from "../src/palette";
 import { OrbitRenderer } from "../src/renderer";
 import { DEFAULT_SETTINGS } from "../src/types";
 
@@ -43,7 +42,6 @@ for (let i = 1; i < COUNT; i++) {
 }
 
 const graph = buildGraph(notes, links);
-const colors = assignFolderColors(graph.nodes);
 const canvas = document.getElementById("c") as HTMLCanvasElement;
 const label = document.getElementById("hover")!;
 const settings = { ...DEFAULT_SETTINGS };
@@ -51,5 +49,5 @@ const renderer = new OrbitRenderer(canvas, settings, {
 	onHover: (id) => (label.textContent = id || ""),
 	onClick: (id) => renderer.setCenter(id),
 });
-renderer.setGraph(graph, colors);
+renderer.setGraph(graph);
 (window as unknown as { orbit: unknown }).orbit = { renderer, graph, settings };

@@ -17,12 +17,14 @@ export interface OrbitSettings {
 	showSignals: boolean;
 	/** Show notes that aren't connected to the center as an outer asteroid belt. */
 	showOrphans: boolean;
-	/** Planets bigger than this (in screen pixels) get a label. 0 = label everything. */
+	/** Notes bigger than this (in screen pixels) get a label. 0 = label everything. */
 	labelThreshold: number;
 	/** 0..2 */
 	starDensity: number;
 	/** 0..2 */
 	glowIntensity: number;
+	/** The single color everything glows in. */
+	accentColor: string;
 	/** One folder path per line. */
 	excludeFolders: string;
 }
@@ -30,15 +32,16 @@ export interface OrbitSettings {
 export const DEFAULT_SETTINGS: OrbitSettings = {
 	centerMode: "active",
 	orbitSpeed: 1,
-	tilt: 50,
+	tilt: 62,
 	maxOrbits: 6,
 	showOrbits: true,
 	showLinks: true,
-	linkOpacity: 0.45,
+	linkOpacity: 0.5,
 	showSignals: true,
 	showOrphans: true,
-	labelThreshold: 5,
-	starDensity: 1,
+	labelThreshold: 4,
+	starDensity: 0.6,
 	glowIntensity: 1,
+	accentColor: "#dfe6f5",
 	excludeFolders: "",
 };

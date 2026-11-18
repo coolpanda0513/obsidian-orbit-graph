@@ -1,14 +1,19 @@
 {
   "name": "obsidian-orbit-graph",
   "version": "1.0.0",
-  "description": "A glowing, orbiting space-themed graph of every note in your vault.",
+  "description": "A dark, minimal orbit view of your notes.",
   "main": "main.js",
   "scripts": {
     "dev": "node esbuild.config.mjs",
     "build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production",
     "demo": "node esbuild.config.mjs demo"
   },
-  "keywords": ["obsidian", "graph", "space", "orbit"],
+  "keywords": [
+    "obsidian",
+    "graph",
+    "space",
+    "orbit"
+  ],
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^20.11.0",

@@ -16,11 +16,11 @@ export class OrbitSettingTab extends PluginSettingTab {
 		const save = () => this.plugin.saveSettings();
 		containerEl.empty();
 
-		new Setting(containerEl).setName("Solar system").setHeading();
+		new Setting(containerEl).setName("Layout").setHeading();
 
 		new Setting(containerEl)
 			.setName("Center of the system")
-			.setDesc("Which note becomes the sun. Linked notes orbit around it, ordered by how many links away they are.")
+			.setDesc("Which note sits in the middle. Linked notes orbit around it, further out the more links away they are.")
 			.addDropdown((d) =>
 				d
 					.addOption("active", "The note you have open")
@@ -48,7 +48,7 @@ export class OrbitSettingTab extends PluginSettingTab {
 
 		new Setting(containerEl)
 			.setName("Show unlinked notes")
-			.setDesc("Notes that can't be reached from the sun drift in an outer asteroid belt.")
+			.setDesc("Notes with no path to the center drift on a faint outer ring.")
 			.addToggle((t) =>
 				t.setValue(s.showOrphans).onChange(async (v) => {
 					s.showOrphans = v;
@@ -58,7 +58,7 @@ export class OrbitSettingTab extends PluginSettingTab {
 
 		new Setting(containerEl)
 			.setName("Excluded folders")
-			.setDesc("One folder path per line. Notes inside these folders are left out of the universe.")
+			.setDesc("One folder path per line. Notes inside these folders are left out.")
 			.addTextArea((t) =>
 				t
 					.setPlaceholder("Templates\nArchive/Old")
@@ -128,10 +128,20 @@ export class OrbitSettingTab extends PluginSettingTab {
 
 		new Setting(containerEl)
 			.setName("Signals")
-			.setDesc("Little pulses of light that travel along links.")
+			.setDesc("Faint points of light that drift along links.")
 			.addToggle((t) =>
 				t.setValue(s.showSignals).onChange(async (v) => {
 					s.showSignals = v;
+					await save();
+				}),
+			);
+
+		new Setting(containerEl)
+			.setName("Color")
+			.setDesc("The one color everything glows in.")
+			.addColorPicker((c) =>
+				c.setValue(s.accentColor).onChange(async (v) => {
+					s.accentColor = v;
 					await save();
 				}),
 			);
@@ -151,7 +161,7 @@ export class OrbitSettingTab extends PluginSettingTab {
 
 		new Setting(containerEl)
 			.setName("Star density")
-			.setDesc("Background stars and the occasional shooting star. 0 turns them off.")
+			.setDesc("Faint background stars. 0 turns them off.")
 			.addSlider((sl) =>
 				sl
 					.setLimits(0, 2, 0.1)
@@ -165,7 +175,7 @@ export class OrbitSettingTab extends PluginSettingTab {
 
 		new Setting(containerEl)
 			.setName("Label size threshold")
-			.setDesc("Planets bigger than this many pixels on screen get a name. Zoom in to see more. 0 labels everything.")
+			.setDesc("Notes bigger than this many pixels on screen show their name. Zoom in to see more. 0 labels everything.")
 			.addSlider((sl) =>
 				sl
 					.setLimits(0, 20, 1)
