@@ -7,7 +7,7 @@ import { OrbitRenderer } from "../src/renderer";
 import { DEFAULT_SETTINGS } from "../src/types";
 
 const params = new URLSearchParams(location.search);
-const COUNT = parseInt(params.get("n") || "260", 10);
+const COUNT = Math.max(2, parseInt(params.get("n") || "260", 10));
 const folders = ["Projects", "Areas", "Journal", "Reading", "Ideas", "People", "Recipes", ""];
 const words = ["Nebula", "Quasar", "Orbit", "Pulsar", "Comet", "Lunar", "Solar", "Aurora", "Zenith", "Photon", "Eclipse", "Vortex", "Halo", "Ion", "Gravity", "Cosmos", "Meridian", "Drift", "Signal", "Horizon"];
 

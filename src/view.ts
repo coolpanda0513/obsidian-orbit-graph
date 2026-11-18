@@ -55,6 +55,7 @@ export class OrbitView extends ItemView {
 		this.emptyEl = root.createDiv({ cls: "orbit-graph-empty", text: "No notes yet" });
 
 		const font = getComputedStyle(root).getPropertyValue("--font-interface").trim();
+		const mono = getComputedStyle(root).getPropertyValue("--font-monospace").trim();
 		this.renderer = new OrbitRenderer(
 			this.canvasEl,
 			this.plugin.settings,
@@ -63,7 +64,7 @@ export class OrbitView extends ItemView {
 				onClick: (id, ev) => this.openNote(id, !!Keymap.isModEvent(ev)),
 				onContextMenu: (id, ev) => this.showMenu(id, ev),
 			},
-			{ fontFamily: font || undefined },
+			{ fontFamily: font || undefined, monoFamily: mono || undefined },
 		);
 
 		this.registerEvent(this.app.metadataCache.on("resolved", () => this.requestRebuild()));

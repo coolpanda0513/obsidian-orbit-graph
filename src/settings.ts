@@ -161,7 +161,7 @@ export class OrbitSettingTab extends PluginSettingTab {
 
 		new Setting(containerEl)
 			.setName("Star density")
-			.setDesc("Faint background stars. 0 turns them off.")
+			.setDesc("Background stars and the Milky Way. 0 turns them off.")
 			.addSlider((sl) =>
 				sl
 					.setLimits(0, 2, 0.1)
@@ -171,6 +171,58 @@ export class OrbitSettingTab extends PluginSettingTab {
 						s.starDensity = v;
 						await save();
 					}),
+			);
+
+		new Setting(containerEl).setName("Effects").setHeading();
+
+		new Setting(containerEl)
+			.setName("Light trails")
+			.setDesc("Each note leaves a fading streak along its orbit, like a long exposure.")
+			.addToggle((t) =>
+				t.setValue(s.trails).onChange(async (v) => {
+					s.trails = v;
+					await save();
+				}),
+			);
+
+		new Setting(containerEl)
+			.setName("Dust")
+			.setDesc("Faint dust drifting in the orbital plane.")
+			.addToggle((t) =>
+				t.setValue(s.dust).onChange(async (v) => {
+					s.dust = v;
+					await save();
+				}),
+			);
+
+		new Setting(containerEl)
+			.setName("Bloom")
+			.setDesc("Soft lens bloom around bright light.")
+			.addToggle((t) =>
+				t.setValue(s.bloom).onChange(async (v) => {
+					s.bloom = v;
+					await save();
+				}),
+			);
+
+		new Setting(containerEl)
+			.setName("Film grain")
+			.setDesc("Subtle grain and vignette.")
+			.addToggle((t) =>
+				t.setValue(s.filmGrain).onChange(async (v) => {
+					s.filmGrain = v;
+					await save();
+				}),
+			);
+
+		new Setting(containerEl)
+			.setName("Mouse parallax")
+			.setDesc("The scene leans slightly toward the mouse.")
+			.addToggle((t) =>
+				t.setValue(s.parallax).onChange(async (v) => {
+					s.parallax = v;
+					await save();
+				}),
 			);
 
 		new Setting(containerEl)
